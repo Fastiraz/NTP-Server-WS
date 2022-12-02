@@ -12,8 +12,8 @@ if ( $rdp.Contains("e") -Or $rdp.Contains("E") )
     try 
     {
         <# enable NTP Server #>
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Srevices\w32time\TimeProviders\NtpServer' -name "Enabled" -value 1
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Srevices\w32time\Config' -name "AnnounceFlags" -value 5
+        Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer' -name "Enabled" -value 1
+        Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Config' -name "AnnounceFlags" -value 5
         Restart-Service w32time
 
         <# setup firewall #>
@@ -28,8 +28,8 @@ elseif ( $rdp.Contains("d") -Or $rdp.Contains("D") )
 {
     try {
         <# disable NTP Server #>
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Srevices\w32time\TimeProviders\NtpServer Server' -name "Enabled" -value 0
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Srevices\w32time\Config' -name "AnnounceFlags" -value 0x61
+        Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer' -name "Enabled" -value 0
+        Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Config' -name "AnnounceFlags" -value 0x61
         Restart-Service w32time
     }
     catch {
